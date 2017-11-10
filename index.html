@@ -1,8 +1,41 @@
-<svg id="color-fill-anchor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="300" xmlns:xlink="http://www.w3.org/1999/xlink">
-  
-  <a xlink:href="http://viget.com">
-    <polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#fa5"></polygon>
-  </a>
-  
+<svg id="board" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="300" xmlns:xlink="http://www.w3.org/1999/xlink">
 </svg>
+
+<script>
+function create_hex(x, y, size, color) {
+    var hex = '<polygon class="hex" points="';
+    hex += x+size  + ',' + y + ' ';
+    hex += (x + size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
+    hex += (x - size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
+    hex += (x - size)        + ',' + y + ' ';
+    hex += (x - size * 0.5)  + ',' + (Math.round(y - size * 0.86667)) + ' ';
+    hex += (x + size * 0.5)  + ',' + (Math.round(y - size * 0.86667));
+    hex += '" fill="#' + color + '"></polygon>';
+    //console.log(hex);
+    return hex;
+}
+
+
+//var board = '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
+var x = 150;
+var y = 150;
+var size = 15;
+color = "aa5";
+
+var board = "";
+board += create_hex(x, y, size, "aa5");
+board += create_hex(x+2*size, y, size, "0a5");
+
+//coordinates are given as x,y and 0,0 is in the top-left corner
+//console.log('<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>');
+//var board = '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
+//var board = '<polygon class="hex" points="300,150 225,280, 75,280, 0,150 75,20"></polygon>';
+document.getElementById("board").innerHTML = board;
+
+//    <polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#0a5"></polygon>
+
+//var elems = document.getElementsByClassName("hex");
+//console.log(elems);
+</script>
+
 
