@@ -37,12 +37,13 @@
         
         var board = "";
 
-        var angle_deg = 90;
+        var angle_deg = 30;
         var angle_rad = Math.PI / 180 * angle_deg;
+        var horizontal = 2 * size * Math.cos(angle_rad); 
+        var vertical   = 3 * size * Math.sin(angle_rad);
         board += create_hex(x, y, size, "aa5");
-        board += create_hex(x, y+3*size, size, "aa5");
-        board += create_hex(x + 0.9*size, y+1.5*size, size, "aa5");
-        board += create_hex(x + 1.8*size, y, size, "0a5");
+        board += create_hex(x + horizontal/2, y + vertical, size, "a05");
+        board += create_hex(x + horizontal, y, size, "0a5");
         
         document.getElementById("board").innerHTML = board;
         
