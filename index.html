@@ -6,13 +6,14 @@
     function create_hex(x, y, size, color) {
         // coordinates are given as x,y and 0,0 is in the top-left corner
         // '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
+        var squint = 0.86667;
         var hex = '<polygon class="hex" points="';
         hex += x+size  + ',' + y + ' ';
-        hex += (x + size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
-        hex += (x - size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
+        hex += (x + size * 0.5)  + ',' + (Math.round(y + size * squint)) + ' ';
+        hex += (x - size * 0.5)  + ',' + (Math.round(y + size * squint)) + ' ';
         hex += (x - size)        + ',' + y + ' ';
-        hex += (x - size * 0.5)  + ',' + (Math.round(y - size * 0.86667)) + ' ';
-        hex += (x + size * 0.5)  + ',' + (Math.round(y - size * 0.86667));
+        hex += (x - size * 0.5)  + ',' + (Math.round(y - size * squint)) + ' ';
+        hex += (x + size * 0.5)  + ',' + (Math.round(y - size * squint));
         hex += '" fill="#' + color + '"></polygon>';
         //console.log(hex);
         return hex;
