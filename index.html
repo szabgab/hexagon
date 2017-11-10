@@ -3,20 +3,23 @@
 
 <script>
 (function() {
-    var squint = 0.8;
+    function hex_corner(x, y, size, i) {
+        var angle_deg = 60 * i;
+        angle_deg += 30; // for pointy topped hexagon
+        var angle_rad = Math.PI / 180 * angle_deg;
+        return Math.round(x + size * Math.cos(angle_rad)) + ',' + Math.round(y + size * Math.sin(angle_rad));
+    }
+
+
     function create_hex(x, y, size, color) {
         // coordinates are given as x,y and 0,0 is in the top-left corner
         // '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
         var hex = '<polygon class="hex" points="';
-        hex += Math.round(x+size)          + ',' + Math.round(y) + ' ';
-        hex += Math.round(x + size * 0.5)  + ',' + Math.round(y + size * squint) + ' ';
-        hex += Math.round(x - size * 0.5)  + ',' + Math.round(y + size * squint) + ' ';
-        hex += Math.round(x - size)        + ',' + Math.round(y) + ' ';
-        hex += Math.round(x - size * 0.5)  + ',' + Math.round(y - size * squint) + ' ';
-        hex += Math.round(x + size * 0.5)  + ',' + Math.round(y - size * squint);
+        for (var i=0; i<6; i++) {
+            hex += hex_corner(x, y, size, i) + ' ';
+        } 
         hex += '" ';
-        hex += 'style="fill:#' + color+ ';stroke:purple;stroke-width:1"'
-        //hex += 'fill="#' + color + '"
+        hex += 'style="fill:#' + color+ ';stroke:black;stroke-width:1"'
         hex += '></polygon>';
         console.log(hex);
         return hex;
@@ -33,10 +36,13 @@
         color = "aa5";
         
         var board = "";
+
+        var angle_deg = 90;
+        var angle_rad = Math.PI / 180 * angle_deg;
         board += create_hex(x, y, size, "aa5");
-        board += create_hex(x, y+2*size*squint, size, "aa5");
-        board += create_hex(x+2*size, y, size, "0a5");
-        //board += create_hex(x+size, y+size*squint, size, "0a5");
+        board += create_hex(x, y+3*size, size, "aa5");
+        board += create_hex(x + 0.9*size, y+1.5*size, size, "aa5");
+        board += create_hex(x + 1.8*size, y, size, "0a5");
         
         document.getElementById("board").innerHTML = board;
         
