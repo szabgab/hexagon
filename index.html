@@ -15,6 +15,19 @@
 
 <script>
 (function() {
+    var players = {
+       "a" : {
+           "color" : "aa5"
+       },
+       "b" : {
+          "color" : "0a5"
+       },
+       "c" : {
+          "color" : "a05"
+       }
+    };
+    var neutral = "aaa";
+
     function hex_corner(x, y, size, i) {
         var angle_deg = 60 * i;
         angle_deg += 30; // for pointy topped hexagon
@@ -45,7 +58,6 @@
         var x = 150;
         var y = 150;
         var size = 15;
-        color = "aa5";
         
         var board = "";
 
@@ -55,13 +67,14 @@
         var vertical   = 3 * size * Math.sin(angle_rad);
 
         var board_data = [
-           [0, 0, "aa5"],
-           [2, 0, "0a5"],
-           [1, 1, "a05"]
+           [0, 0, "a"],
+           [2, 0, "b"],
+           [1, 1, "c"]
         ];
         for (var i=0; i < board_data.length; i++) {
             var b = board_data[i];
-            board += create_hex(x + b[0] * horizontal / 2, y + b[1] * vertical, size, b[2]);
+            var color = players[ b[2] ]["color"];
+            board += create_hex(x + b[0] * horizontal / 2, y + b[1] * vertical, size, color);
         }
 
         document.getElementById("board").innerHTML = board;
@@ -71,6 +84,10 @@
         for (var i=0; i < elems.length; i++) {
             elems[i].addEventListener('click', clicked);
         }
+    }
+
+    function generate_game() {
+         // 
     }
     
     draw_board();
