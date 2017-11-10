@@ -2,45 +2,47 @@
 </svg>
 
 <script>
-function create_hex(x, y, size, color) {
-    // coordinates are given as x,y and 0,0 is in the top-left corner
-    // '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
-    var hex = '<polygon class="hex" points="';
-    hex += x+size  + ',' + y + ' ';
-    hex += (x + size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
-    hex += (x - size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
-    hex += (x - size)        + ',' + y + ' ';
-    hex += (x - size * 0.5)  + ',' + (Math.round(y - size * 0.86667)) + ' ';
-    hex += (x + size * 0.5)  + ',' + (Math.round(y - size * 0.86667));
-    hex += '" fill="#' + color + '"></polygon>';
-    //console.log(hex);
-    return hex;
-}
-
-function clicked() {
-    console.log(this);
-}
-
-function draw_board() {
-    var x = 150;
-    var y = 150;
-    var size = 15;
-    color = "aa5";
-    
-    var board = "";
-    board += create_hex(x, y, size, "aa5");
-    board += create_hex(x+2*size, y, size, "0a5");
-    
-    document.getElementById("board").innerHTML = board;
-    
-    var elems = document.getElementsByClassName("hex");
-    //console.log(elems);
-    for (var i=0; i < elems.length; i++) {
-        elems[i].addEventListener('click', clicked);
+(function() {
+    function create_hex(x, y, size, color) {
+        // coordinates are given as x,y and 0,0 is in the top-left corner
+        // '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
+        var hex = '<polygon class="hex" points="';
+        hex += x+size  + ',' + y + ' ';
+        hex += (x + size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
+        hex += (x - size * 0.5)  + ',' + (Math.round(y + size * 0.86667)) + ' ';
+        hex += (x - size)        + ',' + y + ' ';
+        hex += (x - size * 0.5)  + ',' + (Math.round(y - size * 0.86667)) + ' ';
+        hex += (x + size * 0.5)  + ',' + (Math.round(y - size * 0.86667));
+        hex += '" fill="#' + color + '"></polygon>';
+        //console.log(hex);
+        return hex;
     }
-}
-
-draw_board();
+    
+    function clicked() {
+        console.log(this);
+    }
+    
+    function draw_board() {
+        var x = 150;
+        var y = 150;
+        var size = 15;
+        color = "aa5";
+        
+        var board = "";
+        board += create_hex(x, y, size, "aa5");
+        board += create_hex(x+2*size, y, size, "0a5");
+        
+        document.getElementById("board").innerHTML = board;
+        
+        var elems = document.getElementsByClassName("hex");
+        //console.log(elems);
+        for (var i=0; i < elems.length; i++) {
+            elems[i].addEventListener('click', clicked);
+        }
+    }
+    
+    draw_board();
+})();
 
 </script>
 
