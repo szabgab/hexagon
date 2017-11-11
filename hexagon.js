@@ -12,7 +12,7 @@
     };
     var neutral = "aaa";
 
-    var board = [];
+    var board;
 
     window.onhashchange = function() {
         var hash = location.hash;
@@ -23,9 +23,8 @@
         }
         if (hash === '#example') {
             board = [
-               [0, 0, "a"],
-               [1, 0, "b"],
-               [1, 1, "c"]
+                [ ["a"], null  ],
+                [ ["b"], ["c"] ]
             ];
         }
         draw_board();
@@ -58,6 +57,10 @@
     }
 
     function draw_board() {
+        if (board === null || board === undefined) {
+            return;
+        }
+        //console.log(board);
         var x = 150;
         var y = 150;
         var size = 15;
@@ -70,12 +73,17 @@
         var vertical   = 3 * size * Math.sin(angle_rad);
 
         for (var i=0; i < board.length; i++) {
-            var b = board[i];
-            var color = neutral;
-            if (b[2] !== 0) {
-                color = players[ b[2] ]["color"];
+            for (var j=0; j < board[i].length; j++) {
+                var b = board[i][j];
+                var color = neutral;
+                if (b === null) {
+                    continue;
+                }
+                if (b[0] !== 0) {
+                    color = players[ b[0] ]["color"];
+                }
+                board_svg += create_hex(x + i * horizontal - (j % 2) * horizontal / 2, y + j * vertical, size, color);
             }
-            board_svg += create_hex(x + b[0] * horizontal - (b[1] % 2) * horizontal / 2, y + b[1] * vertical, size, color);
         }
 
         document.getElementById("board").innerHTML = board_svg;
@@ -92,8 +100,9 @@
         var max_height = 2;
         board = [];
         for (var x = 0; x < max_width; x++) {
+            board[x] = []
             for (var y = 0; y < max_height; y++) {
-                board.push([x, y, 0])
+                board[x][y] = [0];
             }
         }
     }
