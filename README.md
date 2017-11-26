@@ -10,9 +10,11 @@
 
 
 ## TODO
-* Store information about the map in a matrix by the coordinates instead of an array?
-  In that case some of the elements will be null - meaning they are not in the map
+* Add testing
+* Clicking on an hexagon should show its coordinates
 
-* We can check if a map is continous. Though we might want to allow distinct parts in advanced version of the game.
+* In game drawing click on a hexagon allow to set it as part of an area
+* Button to "download board" will download a json file representing the board.
+* Button to "upload board" will allow us to upload a json file representing a board.
 
-
+* We can check if a map is continuous. Though we might want to allow distinct parts in advanced version of the game.
