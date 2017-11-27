@@ -27,6 +27,11 @@
                 [ ["b"], ["c"] ]
             ];
         }
+        if (hash === '#game1') {
+            game_editor(10, 3);
+            board[2][1] = ['a'];
+            board[7][1] = ['b'];
+        }
         draw_board();
     };
 
@@ -60,7 +65,7 @@
         if (board === null || board === undefined) {
             return;
         }
-        //console.log(board);
+        //console.table(board);
         var x = 150;
         var y = 150;
         var size = 15;
