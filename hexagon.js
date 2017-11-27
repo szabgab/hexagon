@@ -19,7 +19,7 @@
         console.log(hash);
         //show_page(hash);
         if (hash === '#editor') {
-            game_editor();
+            game_editor(10, 2);
         }
         if (hash === '#example') {
             board = [
@@ -95,13 +95,11 @@
         }
     }
 
-    function game_editor() {
-        var max_width = 10;
-        var max_height = 2;
+    function game_editor(width, height) {
         board = [];
-        for (var x = 0; x < max_width; x++) {
+        for (var x = 0; x < width; x++) {
             board[x] = []
-            for (var y = 0; y < max_height; y++) {
+            for (var y = 0; y < height; y++) {
                 board[x][y] = [0];
             }
         }
