@@ -11,7 +11,6 @@
 
 ## TODO
 * Add testing
-* Clicking on an hexagon should show its coordinates
 
 * Game 1
   A simple board with two players

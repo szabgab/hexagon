@@ -43,7 +43,7 @@
     }
 
 
-    function create_hex(x, y, size, color) {
+    function create_hex(x, y, size, color, board_x, board_y) {
         // coordinates are given as x,y and 0,0 is in the top-left corner
         // '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
         var hex = '<polygon class="hex" points="';
@@ -52,13 +52,16 @@
         }
         hex += '" ';
         hex += 'style="fill:#' + color+ ';stroke:black;stroke-width:1"'
+        hex += ' coord-x=' + board_x;
+        hex += ' coord-y=' + board_y;
         hex += '></polygon>';
         //console.log(hex);
         return hex;
     }
 
     function clicked() {
-        console.log(this);
+        console.log(this.attributes["coord-x"]);
+        console.log(this.attributes["coord-y"]);
     }
 
     function draw_board() {
@@ -87,7 +90,7 @@
                 if (b[0] !== 0) {
                     color = players[ b[0] ]["color"];
                 }
-                board_svg += create_hex(x + i * horizontal - (j % 2) * horizontal / 2, y + j * vertical, size, color);
+                board_svg += create_hex(x + i * horizontal - (j % 2) * horizontal / 2, y + j * vertical, size, color, i, j);
             }
         }
 
