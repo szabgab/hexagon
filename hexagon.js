@@ -59,14 +59,22 @@
         cx = x;
         cy = y;
         if (drawing === "soldier") {
-            hex += '<circle cx="' + cx + '" cy="' + cy + '" r="4" stroke="black" stroke-width="3" fill="black" />';
+            hex += '<circle class="drawing" cx="' + cx + '" cy="' + cy + '" r="4" stroke="black" stroke-width="3" fill="black" />';
         }
         return hex;
     }
 
-    function clicked() {
-        console.log(this.attributes["coord-x"]);
-        console.log(this.attributes["coord-y"]);
+    function clicked_drawing() {
+        _clicked(this.previousSibling);
+    }
+
+    function clicked_hex() {
+        _clicked(this);
+    }
+
+    function _clicked(me) {
+        console.log(me.attributes["coord-x"]);
+        console.log(me.attributes["coord-y"]);
     }
 
     function draw_board() {
@@ -107,7 +115,13 @@
         var elems = document.getElementsByClassName("hex");
         //console.log(elems);
         for (var i=0; i < elems.length; i++) {
-            elems[i].addEventListener('click', clicked);
+            elems[i].addEventListener('click', clicked_hex);
+        }
+
+        var elems = document.getElementsByClassName("drawing");
+        //console.log(elems);
+        for (var i=0; i < elems.length; i++) {
+            elems[i].addEventListener('click', clicked_drawing);
         }
     }
 
