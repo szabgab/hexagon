@@ -73,6 +73,11 @@
     }
 
     function _clicked(me) {
+        // if the "from" is already set, then check if this is a valid move
+        //    if yes, make the move, reset the "from" field.
+        //    if no, give some error message or just don't do anything.
+        // else
+        //    if this is a soldier who has not moved yet, set this to the "from"
         console.log(me.attributes["coord-x"]);
         console.log(me.attributes["coord-y"]);
     }
