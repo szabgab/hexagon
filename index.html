@@ -20,7 +20,8 @@
 <div class="page" id="about">
 <h2>About Hexagon</h2>
 <h3>Source</h3>
-Being written by Gabor Szabo. Source can be found on <a href="https://github.com/szabgab/hexagon">GitHub</a>.
+Being written by Gabor Szabo. Source can be found on <a href="https://github.com/szabgab/hexagon">GitHub</a>. Inspired by <a href="https://github.com/yiotro/Antiyoy">Antiyoy</a> which was inspired by Slay by Sean O'Connor.
+
 <h3>Rules - Game 1</h3>
 <ul>
   <li>A simple board with two players.</li>
@@ -28,8 +29,93 @@ Being written by Gabor Szabo. Source can be found on <a href="https://github.com
   <li>In each move they can move N distance, and enlarge the territory.</li>
   <li>When no more free territory is left the game is over. The one with more territory wins.</li>
 </ul>
+
 <h3>Rules - based on Antiyoy</h3>
-TBD.
+TODO: First this should describe Antiyoy. Then we should start to tweak it to our desire.
+<p>
+The board is an island on the backdrop of the rectangular background. The island itself consist hexagons. Sometimes it has "lakes" in it. The lower right border of each hexagon is a bit thicker to have a more 3d feeling. Each hexagon is either neutral ground (grey) or belongs to a player. Each player has its own color. Each player has a territory that consist of a number of hexagons. In the first few levels the each player has one territory (connected hexagons), in later levels each player has two territories. Sometimes on the opposite sides of the island.
+</p>
+
+<p>
+Each hexagon can have some drawing on it:
+<ul>
+   <li>(nothing)</li>
+   <li>unit</li>
+   <li>tree</li>
+   <li>building</li>
+</ul>
+<h4>Units</h4>
+There are 4 unit types. The differ only by strength. In ascending order of strength:
+<ol>
+   <li>peasant</li>
+   <li>spearman</li>
+   <li>baron</li>
+   <li>knight</li>
+</ol>
+
+<ul>
+    <li>Every unit costs 10, 20, 30, 40 coins when you buy them.</li>
+    <li>Every unit consumes 2, 6, 18, 54 coins per turn.</li>
+    <li>Every unit has a strength of  1, 2, 3, 4.</li>
+</ul>
+
+Units are upgradable and additive.That is if you have a peasant on the board and you buy a spearman and put on the same hexa then you get a baron. In addition you can combine units on the board already. So if you have 2 spearman on the board and move one on the top of the other they get combined into a knight.
+
+Units give adjacent cells under your control protection equal to their strength.
+
+To capture a cell the unit strength must be bigger than protection.
+</p>
+
+<h4>Trees</h4>
+There two types of trees.
+<ul>
+  <li>pine trees</li>
+  <li>palm trees (Gabor: should be changed to weed)</li>
+</ul>
+
+Trees spawn after dead units.
+
+A cell with a tree gives no income.
+It means that trees harm economy.
+
+You have to cut them. Otherwise they will grow and kill your economy. You cut them by moving with any unit to the cell of the tree.
+Palms spawn at the edges and grow very quickly. They have to be cut very quickly. On the other hand they don't spawn at the edges of the iseland so if you control a corner and clean it from trees that side is protected from trees as well. Trees can only occupy formerly empy cells so buildings also stop the growth.
+
+<h4>Buildings</h4>
+Each territory has one "home". (If two territory gets united one of the "homes" is automaticaly removed. If a home gets attacked and is removed by enemy then a new home springs to live at some other place. (TBD where?)  If territories get split, then a new home is automatically created in the territory that does not have a home. (Both if the during the split the only home was removed)
+
+Each hut generates 4 income per turn.
+Towers are used to protect adjacent cells. 
+
+<ul>
+   <li>Small tower costs 15 only barron and knight can destroy it.</li>
+   <li>Large tower cosst 35 only knight can destroy it.</li>
+</ul>
+
+Towers give protection.
+
+Huts give protection.
+
+At the beginning of the game this is the best way to protect your territory.
+Tower price is low and they don't eat money.
+
+<h4>Money</h4>
+Income depends on the number of cells.
+bigger territory has bigger income.
+Trees decrease income.
+
+Units consume money. Powerful units consume more money.
+
+When money runs out all units die.
+
+Income is show in the top center.
+
+<h4>Tactics</h4>
+At the beginning of the game capture neutral cells. After that defend all your cells.
+Make sure that your income is good enough before building units.
+
+Cut enemy territoris to pieces in order to destroy their economy.
+
 </div>
 
 
