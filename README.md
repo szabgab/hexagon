@@ -13,8 +13,8 @@
 * Add testing
 
 * Game 1
-  A simple board with two players
-  Each player has a one territory and on that one soldier
+  A simple board with two players.
+  Each player has one territory and on that one soldier.
   In each move they can move N distance, and enlarge the territory.
   When no more free territory is left the game is over. The one with more territory wins.
 
@@ -26,3 +26,4 @@
 * Button to "upload board" will allow us to upload a json file representing a board.
 
 * We can check if a map is continuous. Though we might want to allow distinct parts in advanced version of the game.
+
