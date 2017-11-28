@@ -43,7 +43,7 @@
     }
 
 
-    function create_hex(x, y, size, color, board_x, board_y) {
+    function create_hex(x, y, size, color, board_x, board_y, drawing) {
         // coordinates are given as x,y and 0,0 is in the top-left corner
         // '<polygon class="hex" points="300,150 225,280 75,280 0,150 75,20 225,20" fill="#aa5"></polygon>';
         var hex = '<polygon class="hex" points="';
@@ -56,6 +56,11 @@
         hex += ' coord-y=' + board_y;
         hex += '></polygon>';
         //console.log(hex);
+        cx = x;
+        cy = y;
+        if (drawing === "soldier") {
+            hex += '<circle cx="' + cx + '" cy="' + cy + '" r="4" stroke="black" stroke-width="3" fill="black" />';
+        }
         return hex;
     }
 
@@ -84,15 +89,18 @@
             for (var j=0; j < board[i].length; j++) {
                 var b = board[i][j];
                 var color = neutral;
+                var drawing = null;
                 if (b === null) {
                     continue;
                 }
                 if (b[0] !== 0) {
                     color = players[ b[0] ]["color"];
+                     drawing = "soldier";
                 }
-                board_svg += create_hex(x + i * horizontal - (j % 2) * horizontal / 2, y + j * vertical, size, color, i, j);
+                board_svg += create_hex(x + i * horizontal - (j % 2) * horizontal / 2, y + j * vertical, size, color, i, j, drawing);
             }
         }
+        //console.log(board_svg);
 
         document.getElementById("board").innerHTML = board_svg;
 
