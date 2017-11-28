@@ -15,25 +15,46 @@
     var board;
 
     window.onhashchange = function() {
+        var page;
         var hash = location.hash;
         console.log(hash);
         //show_page(hash);
         if (hash === '#editor') {
+            page = "game";
             game_editor(10, 2);
         }
         if (hash === '#example') {
+            page = "game";
             board = [
                 [ ["a"], null  ],
                 [ ["b"], ["c"] ]
             ];
         }
         if (hash === '#game1') {
+            page = "game";
             game_editor(10, 3);
             board[2][1] = ['a'];
             board[7][1] = ['b'];
         }
-        draw_board();
+        if (hash === '#about') {
+            page = "about";
+        }
+        show_page(page);
     };
+
+    function show_page(page) {
+        console.log("show_page ",  page);
+        var pages = document.getElementsByClassName("page");
+        for (var i=0; i < pages.length; i++) {
+            pages[i].style.display = "none";
+        }
+        if (page) {
+            document.getElementById(page).style.display = "block";
+        }
+        if (page === "game") {
+            draw_board();
+        }
+    }
 
     function hex_corner(x, y, size, i) {
         var angle_deg = 60 * i;
@@ -150,5 +171,6 @@
     }
 
     location.hash = '';
+    show_page();
     //console.table(board);
 })();

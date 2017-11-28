@@ -12,12 +12,7 @@
 ## TODO
 * Add testing
 
-* Game 1
-  A simple board with two players.
-  Each player has one territory and on that one soldier.
-  In each move they can move N distance, and enlarge the territory.
-  When no more free territory is left the game is over. The one with more territory wins.
-
+* Implement Game 1 described in the rules in the index.html
 
 
 
