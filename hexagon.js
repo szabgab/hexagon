@@ -121,6 +121,15 @@
         }
     }
 
+    function load_file(file) {
+        var client = new XMLHttpRequest();
+        client.open('GET', file);
+        client.onreadystatechange = function() {
+            alert(client.responseText);
+        }
+        client.send();
+    }
+
     location.hash = '';
     //console.table(board);
 })();
